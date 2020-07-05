@@ -4,7 +4,7 @@
 o 
 
 # material
-mtllib kreslo.mtl
+mtllib armchair.mtl
 usemtl palette
 
 # normals
