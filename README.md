@@ -3,7 +3,12 @@
 
 ## Controls
  WASD - Walk
+ 
  Space - Jump
+ 
  Shift - Sprint
+ 
  R - Reload level
+ 
  Esc - Exit Game
+ 
