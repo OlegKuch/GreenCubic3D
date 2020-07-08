@@ -205,6 +205,50 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 0e170563e6c0b6140aa4b72ba29b0273, type: 3}
+--- !u!1 &89221991
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 89221993}
+  - component: {fileID: 89221992}
+  m_Layer: 0
+  m_Name: Abyss
+  m_TagString: Respawn
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!65 &89221992
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 89221991}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 2000, y: 100, z: 2000}
+  m_Center: {x: 0, y: 0, z: 0}
+--- !u!4 &89221993
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 89221991}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 545.8818, y: -100, z: 410.27927}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 2
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &116389045
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -667,7 +711,7 @@ Light:
   m_BounceIntensity: 1
   m_ColorTemperature: 6570
   m_UseColorTemperature: 0
-  m_BoundingSphereOverride: {x: 1.7e-44, y: 0, z: 1, w: 1.427e-42}
+  m_BoundingSphereOverride: {x: NaN, y: 8.172e-42, z: NaN, w: NaN}
   m_UseBoundingSphereOverride: 0
   m_ShadowRadius: 0
   m_ShadowAngle: 0
@@ -861,6 +905,36 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 9aee90cbb5f9b72409e92b94149ded3c, type: 3}
+--- !u!1 &1093010864
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1093010865}
+  m_Layer: 0
+  m_Name: SpawnPoint
+  m_TagString: SpawnPoint
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1093010865
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1093010864}
+  m_LocalRotation: {x: 0, y: 1, z: 0, w: 0}
+  m_LocalPosition: {x: 558, y: 5, z: 455}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 5
+  m_LocalEulerAnglesHint: {x: 0, y: 180, z: 0}
 --- !u!4 &1231738465 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 1291134341383219633, guid: 9a290014dcde971439c28cf5a409c186,
@@ -991,7 +1065,7 @@ Transform:
   - {fileID: 543450651639251741}
   - {fileID: 1403065977}
   m_Father: {fileID: 0}
-  m_RootOrder: 3
+  m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!4 &1555656586 stripped
 Transform:
@@ -1013,6 +1087,7 @@ GameObject:
   - component: {fileID: 1602007452}
   - component: {fileID: 1602007451}
   - component: {fileID: 1602007457}
+  - component: {fileID: 1602007456}
   m_Layer: 0
   m_Name: GreenCubic
   m_TagString: Player
@@ -1104,13 +1179,25 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1602007450}
   m_LocalRotation: {x: 0, y: 1, z: 0, w: 0}
-  m_LocalPosition: {x: 557.84, y: 5.04, z: 454.51}
+  m_LocalPosition: {x: 558, y: 5, z: 455}
   m_LocalScale: {x: 2, y: 2, z: 2}
   m_Children:
   - {fileID: 963194228}
   m_Father: {fileID: 0}
-  m_RootOrder: 2
+  m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 180, z: 0}
+--- !u!114 &1602007456
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1602007450}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2df3c0b98588b81418c09d54742f4550, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!114 &1602007457
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1123,8 +1210,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9ce95624da69c514a905fe9e403445fb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Speed: 10
-  JumpForce: 250
+  SprintSpeed: 17
+  WalkSpeed: 10
+  JumpForce: 200
+  MouseSensitivity: 5
 --- !u!1001 &1618734807
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1450,7 +1539,7 @@ GameObject:
   - component: {fileID: 2062634628}
   m_Layer: 0
   m_Name: Terrain
-  m_TagString: Ground
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 4294967294
@@ -1465,7 +1554,7 @@ TerrainCollider:
   m_Material: {fileID: 0}
   m_Enabled: 1
   m_TerrainData: {fileID: 15600000, guid: 0f595eff055bb944bb15db37795f532b, type: 2}
-  m_EnableTreeColliders: 1
+  m_EnableTreeColliders: 0
 --- !u!218 &2062634629
 Terrain:
   m_ObjectHideFlags: 0
@@ -1886,17 +1975,17 @@ PrefabInstance:
     - target: {fileID: 3669734135461891869, guid: 4827fb31e6b585d46acd729e8ed0a00b,
         type: 3}
       propertyPath: m_BoundingSphereOverride.y
-      value: NaN
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 3669734135461891869, guid: 4827fb31e6b585d46acd729e8ed0a00b,
         type: 3}
       propertyPath: m_BoundingSphereOverride.z
-      value: -1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 3669734135461891869, guid: 4827fb31e6b585d46acd729e8ed0a00b,
         type: 3}
       propertyPath: m_BoundingSphereOverride.w
-      value: 1e-45
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 3669734135461891869, guid: 4827fb31e6b585d46acd729e8ed0a00b,
         type: 3}
@@ -1932,6 +2021,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Intensity
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3669734135461891869, guid: 4827fb31e6b585d46acd729e8ed0a00b,
+        type: 3}
+      propertyPath: m_BoundingSphereOverride.x
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 3848108993405965927, guid: 4827fb31e6b585d46acd729e8ed0a00b,
         type: 3}
@@ -2146,6 +2240,11 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1537314540}
     m_Modifications:
+    - target: {fileID: 307815570722105498, guid: c3caf2b79ae897848a0bbd1d1844cf1f,
+        type: 3}
+      propertyPath: m_TagString
+      value: Untagged
+      objectReference: {fileID: 0}
     - target: {fileID: 6073629727636147463, guid: c3caf2b79ae897848a0bbd1d1844cf1f,
         type: 3}
       propertyPath: m_Name
