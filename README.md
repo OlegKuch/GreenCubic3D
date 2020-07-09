@@ -12,3 +12,6 @@
  
  Esc - Exit Game
  
+ Mouse - Rotate
+
+ Right Mouse Button - Use (Example: Open door)

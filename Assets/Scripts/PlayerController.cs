@@ -8,15 +8,15 @@ public class PlayerController : MonoBehaviour
     public float WalkSpeed = 15f;
     public float JumpForce = 200f;
     public float MouseSensitivity = 10f;
-    private bool _isGrounded;
+    private bool grounded = true;
     private float speed;
 
-    private Rigidbody _rb;
+    private Rigidbody rb;
     public GameObject SpawnPoint;
 
     void Start()
     {
-        _rb = GetComponent<Rigidbody>();
+        rb = GetComponent<Rigidbody>();
     }
     void FixedUpdate()
     {
@@ -49,19 +49,19 @@ public class PlayerController : MonoBehaviour
     {
         if (Input.GetAxis("Jump") > 0)
         {
-            if(_isGrounded)
+            if(grounded)
             {
-                _rb.AddForce(Vector3.up * JumpForce);
+                rb.AddForce(Vector3.up * JumpForce);
             }
         }
     }
     void OnCollisionEnter()
     {
-        _isGrounded = true;
+        grounded = true;
     }
     void OnCollisionExit()
     {
-        _isGrounded = false;
+        grounded = false;
     }
     void OnTriggerEnter(Collider collider)
     {
@@ -73,7 +73,7 @@ public class PlayerController : MonoBehaviour
     void Respawn()
     {   
         Debug.Log("Respawning player.");
-        this.transform.position = SpawnPoint.transform.position;
-        this.transform.rotation = SpawnPoint.transform.rotation;
+        this.transform.position = SpawnPoint.transform.position; // Teleport to spawnpoint
+        this.transform.rotation = SpawnPoint.transform.rotation; // Rotate as spawnpoint
     }
 }
