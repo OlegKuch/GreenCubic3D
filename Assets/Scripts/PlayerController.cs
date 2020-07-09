@@ -8,17 +8,15 @@ public class PlayerController : MonoBehaviour
     public float WalkSpeed = 15f;
     public float JumpForce = 200f;
     public float MouseSensitivity = 10f;
-
     private bool _isGrounded;
     private float speed;
 
     private Rigidbody _rb;
-    private GameObject SpawnPoint;
+    public GameObject SpawnPoint;
 
     void Start()
     {
         _rb = GetComponent<Rigidbody>();
-        SpawnPoint = GameObject.FindGameObjectWithTag("SpawnPoint");
     }
     void FixedUpdate()
     {

@@ -916,7 +916,7 @@ GameObject:
   - component: {fileID: 1093010865}
   m_Layer: 0
   m_Name: SpawnPoint
-  m_TagString: SpawnPoint
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1214,6 +1214,7 @@ MonoBehaviour:
   WalkSpeed: 10
   JumpForce: 200
   MouseSensitivity: 5
+  SpawnPoint: {fileID: 1093010864}
 --- !u!1001 &1618734807
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1538,7 +1539,7 @@ GameObject:
   - component: {fileID: 2062634629}
   - component: {fileID: 2062634628}
   m_Layer: 0
-  m_Name: Terrain
+  m_Name: MainField
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1566,10 +1567,10 @@ Terrain:
   serializedVersion: 6
   m_TerrainData: {fileID: 15600000, guid: 0f595eff055bb944bb15db37795f532b, type: 2}
   m_TreeDistance: 5000
-  m_TreeBillboardDistance: 50
-  m_TreeCrossFadeLength: 5
-  m_TreeMaximumFullLODCount: 50
-  m_DetailObjectDistance: 80
+  m_TreeBillboardDistance: 2000
+  m_TreeCrossFadeLength: 200
+  m_TreeMaximumFullLODCount: 10000
+  m_DetailObjectDistance: 250
   m_DetailObjectDensity: 1
   m_HeightmapPixelError: 5
   m_SplatMapDistance: 1000
