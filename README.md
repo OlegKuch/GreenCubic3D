@@ -15,3 +15,6 @@
  Mouse - Rotate
 
  Right Mouse Button - Use (Example: Open door)
+
+## Contact
+ Discord: https://discord.gg/cus2c4T
