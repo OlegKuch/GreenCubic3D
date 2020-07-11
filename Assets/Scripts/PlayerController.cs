@@ -8,6 +8,7 @@ public class PlayerController : MonoBehaviour
     public float WalkSpeed = 15f;
     public float JumpForce = 200f;
     public float MouseSensitivity = 10f;
+    public float groundDist = 1.0f;
     private bool grounded = true;
     private float speed;
 
@@ -21,6 +22,7 @@ public class PlayerController : MonoBehaviour
     }
     void FixedUpdate()
     {
+        CheckGround();
         JumpLogic();
         MovementLogic();
         RotateLogic();
@@ -56,14 +58,6 @@ public class PlayerController : MonoBehaviour
             }
         }
     }
-    void OnCollisionEnter()
-    {
-        grounded = true;
-    }
-    void OnCollisionExit()
-    {
-        grounded = false;
-    }
     void OnTriggerEnter(Collider collider)
     {
         if(collider.tag == "Respawn")
@@ -76,5 +70,21 @@ public class PlayerController : MonoBehaviour
         Debug.Log("Respawning player.");
         this.transform.position = SpawnPoint.transform.position; // Teleport to spawnpoint
         this.transform.rotation = SpawnPoint.transform.rotation; // Rotate as spawnpoint
+    }
+    void CheckGround()
+    {
+        RaycastHit hit;
+        Ray ray = new Ray(transform.position, -Vector3.up);
+        if (Physics.Raycast (ray, out hit)) 
+        {
+            if(hit.distance - 0.5f <= groundDist)
+            {
+                grounded = true;
+            }
+            else
+            {
+                grounded = false;
+            }
+         }
     }
 }
