@@ -1,4 +1,5 @@
 ﻿using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class GameController : MonoBehaviour
 {
@@ -40,7 +41,7 @@ public class GameController : MonoBehaviour
     void ReloadLevel()
     {
         Debug.Log("Reloading level...");
-        Application.LoadLevel(Application.loadedLevel);
+        SceneManager.LoadScene(SceneManager.GetActiveScene().name);
     }
     void OnTriggerEnter(Collider collider)
     {
