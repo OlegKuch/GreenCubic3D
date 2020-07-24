@@ -72,11 +72,15 @@ public class PlayerController : MonoBehaviour
         float moveVertical = Input.GetAxis("Vertical");
 
         Vector3 movement = new Vector3(moveHorizontal, 0.0f, moveVertical);
+
         transform.Translate(movement * speed * Time.fixedDeltaTime);
         if(Input.GetKey(KeyCode.LeftShift) && energy > 0.2) // Sprint
         {
             speed = SprintSpeed;
-            energy -= 0.2f;
+            if(moveHorizontal > 0.1f)
+            {
+                energy -= 0.2f;
+            }
         }
         else
         {
