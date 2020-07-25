@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 705507994}
-  m_IndirectSpecularColor: {r: 0.44971114, g: 0.49977684, b: 0.57563496, a: 1}
+  m_IndirectSpecularColor: {r: 0.44971067, g: 0.49977994, b: 0.5756328, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -1249,7 +1249,7 @@ Light:
   m_BounceIntensity: 1
   m_ColorTemperature: 6570
   m_UseColorTemperature: 0
-  m_BoundingSphereOverride: {x: 0, y: 1.7191e-41, z: 0, w: 0}
+  m_BoundingSphereOverride: {x: 0, y: 1.3828e-41, z: 0, w: 0}
   m_UseBoundingSphereOverride: 0
   m_ShadowRadius: 0
   m_ShadowAngle: 0
@@ -1260,13 +1260,13 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 705507993}
-  m_LocalRotation: {x: 0.30337554, y: -0.43390182, z: 0.1579273, w: 0.8335176}
-  m_LocalPosition: {x: 1408, y: 632, z: 155}
+  m_LocalRotation: {x: 0.28016648, y: -0.53898555, z: 0.19617465, w: 0.76975125}
+  m_LocalPosition: {x: 1254, y: 632, z: -64}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: 40, y: -55, z: 0}
+  m_LocalEulerAnglesHint: {x: 40, y: -70, z: 0}
 --- !u!4 &707295298 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 1698236204493096744, guid: 9aee90cbb5f9b72409e92b94149ded3c,
@@ -3040,17 +3040,17 @@ PrefabInstance:
     - target: {fileID: 3669734135461891869, guid: 4827fb31e6b585d46acd729e8ed0a00b,
         type: 3}
       propertyPath: m_BoundingSphereOverride.y
-      value: 0
+      value: 1.3794e-41
       objectReference: {fileID: 0}
     - target: {fileID: 3669734135461891869, guid: 4827fb31e6b585d46acd729e8ed0a00b,
         type: 3}
       propertyPath: m_BoundingSphereOverride.z
-      value: 1e-45
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 3669734135461891869, guid: 4827fb31e6b585d46acd729e8ed0a00b,
         type: 3}
       propertyPath: m_BoundingSphereOverride.w
-      value: NaN
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 3669734135461891869, guid: 4827fb31e6b585d46acd729e8ed0a00b,
         type: 3}

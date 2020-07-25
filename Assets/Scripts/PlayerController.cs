@@ -15,6 +15,7 @@ public class PlayerController : MonoBehaviour
 
     private Rigidbody rb;
     public GameObject SpawnPoint;
+    private GameObject Camera;
 
     public float health = 100, food = 100, water = 100, energy = 100;
     
@@ -24,6 +25,7 @@ public class PlayerController : MonoBehaviour
     void Start()
     {
         rb = GetComponent<Rigidbody>();
+        Camera = GameObject.FindWithTag("MainCamera");
         Cursor.visible = false;
         healthRT = healthBar.GetComponent<RectTransform>();
         foodRT = foodBar.GetComponent<RectTransform>();
@@ -77,7 +79,7 @@ public class PlayerController : MonoBehaviour
         if(Input.GetKey(KeyCode.LeftShift) && energy > 0.2) // Sprint
         {
             speed = SprintSpeed;
-            if(moveHorizontal > 0.1f)
+            if(moveHorizontal != 0.0f || moveVertical != 0.0f)
             {
                 energy -= 0.2f;
             }
@@ -90,7 +92,15 @@ public class PlayerController : MonoBehaviour
     private void RotateLogic()
     {
         float h = MouseSensitivity * Input.GetAxis("Mouse X");
-        transform.Rotate(0, h, 0);
+        float v = (MouseSensitivity) * Input.GetAxis("Mouse Y");
+        if(Input.GetKey(KeyCode.Mouse1)) // Rotate camera
+        {
+            Camera.transform.Rotate(v / 3,h / 3,0);
+        }
+        else // Rotate player
+        {
+            transform.Rotate(0,h,0); 
+        }
     }
     private void JumpLogic()
     {

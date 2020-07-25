@@ -16,5 +16,7 @@
 
  Right Mouse Button - Use (Example: Open door)
 
+ Hold and drag Right Mouse Button - rotate camera.
+
 ## Contact
  Discord: https://discord.gg/cus2c4T
