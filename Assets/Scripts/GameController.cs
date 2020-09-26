@@ -31,7 +31,7 @@ public class GameController : MonoBehaviour
         }
         if(Input.GetKeyDown(KeyCode.Escape)) // Exit game
         {
-            Application.Quit();
+            SceneManager.LoadScene(0);
         }
         if(Input.GetKeyDown(KeyCode.Mouse1)) // Some interacts with right click
         {
