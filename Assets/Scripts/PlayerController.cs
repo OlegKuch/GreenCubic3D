@@ -1,21 +1,23 @@
 ﻿using UnityEngine;
 
-[RequireComponent(typeof(Rigidbody))]
-
 public class PlayerController : MonoBehaviour
 {
     public float SprintSpeed = 25f;
     public float WalkSpeed = 15f;
     public float JumpForce = 200f;
-    public float MouseSensitivity = 10f;
+    public float MouseSensitivity = 100f;
     public float groundDist = 1.0f;
     private bool grounded = true;
     private float speed;
     public float DamageSpeed = 0.5f;
 
+    private AudioSource audioSrc;
     private Rigidbody rb;
     public GameObject SpawnPoint;
     private GameObject Camera;
+    public GameObject Hand;
+    public FixedJoystick WalkJoystick;
+    public GameObject glock;
 
     public float health = 100, food = 100, water = 100, energy = 100;
     
@@ -31,6 +33,7 @@ public class PlayerController : MonoBehaviour
         foodRT = foodBar.GetComponent<RectTransform>();
         waterRT = waterBar.GetComponent<RectTransform>();
         energyRT = energyBar.GetComponent<RectTransform>();
+        audioSrc = GetComponent<AudioSource>();
     }
     void FixedUpdate()
     {
@@ -44,15 +47,15 @@ public class PlayerController : MonoBehaviour
         SetBars();
         if(health < 100 && food > 0.05 && water > 0.025) // Health regeneration
         {
-            health += 0.05f;
-            food -= 0.05f;
-            water -= 0.025f;
+            health += 0.05f * Time.timeScale;
+            food -= 0.05f * Time.timeScale;
+            water -= 0.025f * Time.timeScale;
         }
         if(energy < 100 && food > 0.05 && water > 0.07 && !(Input.GetKey(KeyCode.LeftShift))) // Energy regeneration
         {
-            energy += 0.2f;
-            food -= 0.03f;
-            water -= 0.05f;
+            energy += 0.2f * Time.timeScale;
+            food -= 0.03f * Time.timeScale;
+            water -= 0.05f * Time.timeScale;
         }
         if(food < 0.1 || water < 0.1)
         {
@@ -60,7 +63,7 @@ public class PlayerController : MonoBehaviour
             {
                 energy -= 1;
             }
-            health -= 0.1f;
+            health -= 0.1f * Time.timeScale;
         }
         if(health < 0.1) // Die
         {
@@ -70,11 +73,14 @@ public class PlayerController : MonoBehaviour
     }
     private void MovementLogic()
     {
-        float moveHorizontal = Input.GetAxis("Horizontal");
+        float moveHorizontal = Input.GetAxis("Horizontal"); // Keyboard
         float moveVertical = Input.GetAxis("Vertical");
-
         Vector3 movement = new Vector3(moveHorizontal, 0.0f, moveVertical);
+        transform.Translate(movement * speed * Time.fixedDeltaTime);
 
+        moveHorizontal = WalkJoystick.Horizontal; // Joystick
+        moveVertical = WalkJoystick.Vertical;
+        movement = new Vector3(moveHorizontal, 0.0f, moveVertical);
         transform.Translate(movement * speed * Time.fixedDeltaTime);
         if(Input.GetKey(KeyCode.LeftShift) && energy > 0.2) // Sprint
         {
@@ -91,16 +97,11 @@ public class PlayerController : MonoBehaviour
     }
     private void RotateLogic()
     {
-        float h = MouseSensitivity * Input.GetAxis("Mouse X");
-        float v = (MouseSensitivity) * Input.GetAxis("Mouse Y");
-        if(Input.GetKey(KeyCode.Mouse1)) // Rotate camera
-        {
-            Camera.transform.Rotate(v / 3,h / 3,0);
-        }
-        else // Rotate player
-        {
-            transform.Rotate(0,h,0); 
-        }
+        float h = MouseSensitivity * Input.GetAxis("Mouse X") * Time.deltaTime;
+        float v = MouseSensitivity * Input.GetAxis("Mouse Y") * Time.deltaTime;
+        Camera.transform.Rotate(v / 3 * -1,0,0);
+        Hand.transform.Rotate(v / 3 * -1,0,0);  
+        transform.Rotate(0,h,0); 
     }
     private void JumpLogic()
     {
@@ -154,13 +155,13 @@ public class PlayerController : MonoBehaviour
         waterRT.sizeDelta = new Vector2(water * 2.5f,20);
         energyRT.sizeDelta = new Vector2(energy * 2.5f,20);
     }
-    void OnCollisionEnter()
+    void OnCollisionEnter(Collision collision)
     {
-        if(rb.velocity.y < DamageSpeed && grounded) // Fall Damage
+        if(collision.gameObject.tag == "9x19mm")
         {
-            health -= (rb.velocity.y + DamageSpeed) * -20;
-            Debug.Log("You get fall damage.");
-            Debug.Log(rb.velocity.y);
+            Glock19.ammo++;
+            Destroy(collision.gameObject);
+            audioSrc.Play();
         }
     }
 }

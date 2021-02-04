@@ -43,5 +43,4 @@ public class Menu : MonoBehaviour
     {
         QualitySettings.SetQualityLevel(5);
     }
-
 }
