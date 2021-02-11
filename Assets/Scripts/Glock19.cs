@@ -14,8 +14,8 @@ public class Glock19 : MonoBehaviour
     private new GameObject camera;
     float shootTimer = 1f;
     float fireRate = 0.15f;
-    public static uint magazine = 15;
-    public static uint ammo = 0;
+    public uint magazine = 15;
+    public uint ammo = 0;
     bool isReloading = false;
     void Start()
     {
@@ -66,11 +66,12 @@ public class Glock19 : MonoBehaviour
             
             GameObject newHole = Instantiate(bulletHolePrefab,shot.point + shot.normal * 0.001f,Quaternion.LookRotation(shot.normal) * Quaternion.Euler(0,180,0));
             newHole.transform.parent = shot.collider.gameObject.transform;
-            if(shot.rigidbody)
+            if(shot.rigidbody) // Kick
             {
                 shot.rigidbody.AddForceAtPosition(transform.TransformDirection(Vector3.right) * 250f,shot.point);
             }
         }
+        // Bullet shells
         GameObject newShell = Instantiate(bulletShellPrefab,transform.position + Vector3.up, transform.rotation * Quaternion.Euler(0,0,-90));
         Rigidbody nsr = newShell.GetComponent<Rigidbody>();
         nsr.AddForce(camera.transform.right * 0.1f);

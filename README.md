@@ -8,7 +8,7 @@
  
  Shift - Sprint
  
- R - Reload level
+ R - Reload weapon
  
  Esc - Exit Game
  
@@ -16,7 +16,9 @@
 
  Right Mouse Button - Use (Example: Open door)
 
- Hold and drag Right Mouse Button - rotate camera.
+ Left Mouse Button - Attack
+
+ E - grab object
 
 ## Contact
  Discord: https://discord.gg/cus2c4T

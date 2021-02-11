@@ -5,7 +5,7 @@ public class PlayerController : MonoBehaviour
     public float SprintSpeed = 25f;
     public float WalkSpeed = 15f;
     public float JumpForce = 200f;
-    public float MouseSensitivity = 100f;
+    public float MouseSensitivity = 200f;
     public float groundDist = 1.0f;
     private bool grounded = true;
     private float speed;
@@ -18,11 +18,13 @@ public class PlayerController : MonoBehaviour
     public GameObject Hand;
     public FixedJoystick WalkJoystick;
     public GameObject glock;
-
+    private Glock19 glockScript;
     public float health = 100, food = 100, water = 100, energy = 100;
     
     public GameObject healthBar, foodBar, waterBar, energyBar;
     RectTransform healthRT, foodRT, waterRT, energyRT;
+
+    Transform carryingObject = null;
 
     void Start()
     {
@@ -34,6 +36,7 @@ public class PlayerController : MonoBehaviour
         waterRT = waterBar.GetComponent<RectTransform>();
         energyRT = energyBar.GetComponent<RectTransform>();
         audioSrc = GetComponent<AudioSource>();
+        glockScript = glock.GetComponent<Glock19>();
     }
     void FixedUpdate()
     {
@@ -69,6 +72,24 @@ public class PlayerController : MonoBehaviour
         {
             Debug.Log("You die.");
             Respawn();
+        }
+        if(Input.GetKeyDown(KeyCode.E))
+        {
+            RaycastHit hit;
+            if(Physics.Raycast(Camera.transform.position,Camera.transform.forward,out hit,10)) // Grab objects
+            {
+                if(hit.rigidbody)
+                {
+                    if(hit.collider.gameObject.transform.parent)
+                    {
+                        hit.collider.transform.parent = null;
+                    }
+                    else
+                    {
+                        hit.collider.gameObject.transform.parent = Camera.transform;
+                    }
+                }
+            }
         }
     }
     private void MovementLogic()
@@ -120,6 +141,13 @@ public class PlayerController : MonoBehaviour
         {
             Respawn();
         }
+        if(collider.gameObject.tag == "9x19mm")
+        {
+            collider.gameObject.SetActive(false);
+            Destroy(collider.gameObject);
+            glockScript.ammo++;
+            audioSrc.Play();
+        }
     }
     void Respawn()
     {   
@@ -154,14 +182,5 @@ public class PlayerController : MonoBehaviour
         foodRT.sizeDelta = new Vector2(food * 2.5f,20);
         waterRT.sizeDelta = new Vector2(water * 2.5f,20);
         energyRT.sizeDelta = new Vector2(energy * 2.5f,20);
-    }
-    void OnCollisionEnter(Collision collision)
-    {
-        if(collision.gameObject.tag == "9x19mm")
-        {
-            Glock19.ammo++;
-            Destroy(collision.gameObject);
-            audioSrc.Play();
-        }
     }
 }
